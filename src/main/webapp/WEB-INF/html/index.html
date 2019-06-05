@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Focus Admin: Creative Admin Dashboard</title>
+        <title>首页</title>
         <!-- ================= Favicon ================== -->
         <!-- Standard -->
         <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
@@ -153,6 +153,7 @@
                         </div>
                     </div>
                     <div class="float-right">
+                        <#if sysUser??>
                         <div class="dropdown dib">
                             <div class="header-icon" data-toggle="dropdown">
                                 <i class="ti-bell"></i>
@@ -169,36 +170,6 @@
                                                         <small class="notification-timestamp pull-right">02:34 PM</small>
                                                         <div class="notification-heading">Mr. John</div>
                                                         <div class="notification-text">5 members joined today </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img class="pull-left m-r-10 avatar-img" src="/html/assets/images/avatar/3.jpg" alt="" />
-                                                    <div class="notification-content">
-                                                        <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                        <div class="notification-heading">Mariam</div>
-                                                        <div class="notification-text">likes a photo of you</div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img class="pull-left m-r-10 avatar-img" src="/html/assets/images/avatar/3.jpg" alt="" />
-                                                    <div class="notification-content">
-                                                        <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                        <div class="notification-heading">Tasnim</div>
-                                                        <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img class="pull-left m-r-10 avatar-img" src="/html/assets/images/avatar/3.jpg" alt="" />
-                                                    <div class="notification-content">
-                                                        <small class="notification-timestamp pull-right">02:34 PM</small>
-                                                        <div class="notification-heading">Mr. John</div>
-                                                        <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
                                                     </div>
                                                 </a>
                                             </li>
@@ -319,6 +290,40 @@
                                 </div>
                             </div>
                         </div>
+                        <#else>
+                        <div class="dropdown dib">
+                            <div class="header-icon" data-toggle="dropdown">
+                                <i class="ti-user"></i>
+                                <div class="drop-down dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-content-heading">
+                                        <span class="text-left">            选   项</span>
+                                    </div>
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="/home/toLogin">
+                                                    <div class="notification-content" onclick="forword('/home/toLogin')">
+                                                        <i class="ti-arrow-up" style="text-align: center;width: 100%">             登   录</i>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown-content-body">
+                                        <ul>
+                                            <li>
+                                                <a href="/home/toRegister">
+                                                    <div class="notification-content" onclick="forword('/home/toRegister')">
+                                                        <i class="ti-arrow-up" style="text-align: center;width: 100%">             注   册</i>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </#if>
                     </div>
                 </div>
             </div>
@@ -1057,6 +1062,11 @@
         <script src="/html/assets/js/lib/owl-carousel/owl.carousel-init.js"></script>
         <!-- scripit init-->
         <script src="/html/assets/js/dashboard2.js"></script>
+        <script>
+            function forword(url){
+                location.href=url;
+            }
+        </script>
     </body>
 
 </html>

@@ -42,4 +42,9 @@ public class HomeController extends BaseController{
     public String toRegister(){
         return "page-register";
     }
+
+    @RequestMapping("/register")
+    public String register(SysUser sysUser){
+        return "1";
+    }
 }
