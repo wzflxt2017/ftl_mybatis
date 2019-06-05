@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Focus Admin: Widget</title>
+    <title>登录页面</title>
 
     <!-- ================= Favicon ================== -->
     <!-- Standard -->
@@ -21,11 +21,11 @@
     <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
 
     <!-- Styles -->
-    <link href="assets/css/lib/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/css/lib/themify-icons.css" rel="stylesheet">
-    <link href="assets/css/lib/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/lib/helper.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="/html/assets/css/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="/html/assets/css/lib/themify-icons.css" rel="stylesheet">
+    <link href="/html/assets/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="/html/assets/css/lib/helper.css" rel="stylesheet">
+    <link href="/html/assets/css/style.css" rel="stylesheet">
 </head>
 
 <body class="bg-primary">
@@ -36,29 +36,29 @@
                 <div class="col-lg-6">
                     <div class="login-content">
                         <div class="login-logo">
-                            <a href="index.html"><span>Focus</span></a>
+                            <a href="/"><span>首页</span></a>
                         </div>
                         <div class="login-form">
-                            <h4>Administratior Login</h4>
-                            <form>
+                            <h4>用户登录</h4>
+                            <form id="myform">
                                 <div class="form-group">
-                                    <label>Email address</label>
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    <label>账号</label>
+                                    <input type="text" name="userName" class="form-control" placeholder="此处填写账号">
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    <label>密码</label>
+                                    <input type="password" name="password" class="form-control" placeholder="此处填写密码">
                                 </div>
                                 <div class="checkbox">
                                     <label>
-										<input type="checkbox"> Remember Me
+										<input type="checkbox">记住密码
 									</label>
                                     <label class="pull-right">
-										<a href="#">Forgotten Password?</a>
+										<a href="#">忘记密码?</a>
 									</label>
 
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
+                                <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">登录</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
                                         <button type="button" class="btn btn-primary bg-facebook btn-flat btn-addon m-b-10"><i class="ti-facebook"></i>Sign in with facebook</button>
@@ -66,16 +66,43 @@
                                     </div>
                                 </div>
                                 <div class="register-link m-t-15 text-center">
-                                    <p>Don't have account ? <a href="#"> Sign Up Here</a></p>
+                                    <p>没有账号？ <a href="/home/toRegister"> 立即注册 </a></p>
                                 </div>
                             </form>
+                            <input id="output" type="hidden" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="/html/assets/js/lib/jquery.min.js"></script>
+    <script src="/html/assets/js/lib/jquery/jquery.form.js"></script>
+    <script>
 
+
+        var options = {
+            url: "/home/login", //提交地址：默认是form的action,如果申明,则会覆盖
+            type: "post",   //默认是form的method（get or post），如果申明，则会覆盖
+            // beforeSubmit: beforeCheck, //提交前的回调函数
+            success: function(data){
+                if(data==1){
+                    location.href="/"
+                }
+            },  //提交成功后的回调函数
+            error:function(data){
+                console.log(data);
+            },
+            clearForm: true,  //成功提交后，是否清除所有表单元素的值
+            resetForm: true,  //成功提交后，是否重置所有表单元素的值
+            timeout: 3000     //限制请求的时间，当请求大于3秒后，跳出请求
+        };
+        $("#myform").ajaxForm(options);
+
+        $(function(){
+
+        });
+
+    </script>
 </body>
-
 </html>

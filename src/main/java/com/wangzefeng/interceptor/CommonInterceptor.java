@@ -1,5 +1,8 @@
 package com.wangzefeng.interceptor;
 
+import com.wangzefeng.pojo.SysUser;
+import com.wangzefeng.tools.Constants;
+import com.wangzefeng.tools.ValidateUtil;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,7 +19,19 @@ public class CommonInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-
+//        Object ouser = httpServletRequest.getSession().getAttribute(Constants.SESSION_USER);
+//        if(ouser==null){
+//            httpServletResponse.sendRedirect("/home/toLogin");
+//            return false;
+//        }else{
+//            SysUser sysUser = (SysUser) ouser;
+//            if(!ValidateUtil.validateString(sysUser.getSysUserId())){
+//                httpServletResponse.sendRedirect("/home/toLogin");
+//                return false;
+//            }else{
+//                logger.info("当前用户："+sysUser.toString());
+//            }
+//        }
         return true;
     }
 
