@@ -20,16 +20,10 @@ public class CommonInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
 //        Object ouser = httpServletRequest.getSession().getAttribute(Constants.SESSION_USER);
-//        if(ouser==null){
-//            httpServletResponse.sendRedirect("/home/toLogin");
-//            return false;
-//        }else{
+//        if(ouser!=null){
 //            SysUser sysUser = (SysUser) ouser;
-//            if(!ValidateUtil.validateString(sysUser.getSysUserId())){
-//                httpServletResponse.sendRedirect("/home/toLogin");
-//                return false;
-//            }else{
-//                logger.info("当前用户："+sysUser.toString());
+//            if(ValidateUtil.validateString(sysUser.getSysUserId())){
+//                httpServletRequest.setAttribute("sysUser",sysUser);
 //            }
 //        }
         return true;

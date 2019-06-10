@@ -6,5 +6,7 @@ package com.wangzefeng.tools;
 public class Constants {
 
     public static final String SESSION_USER="session_user";
+    public static final String COOKIE_USER_NAME="cookie_user_name";
+    public static final String COOKIE_PASSWORD="cookie_password";
 
 }

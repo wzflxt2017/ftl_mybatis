@@ -125,6 +125,14 @@
     from sys_user
     where sys_user_id = #{sysUserId,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     <!--
       WARNING - @mbggenerated
@@ -154,10 +162,10 @@
     <selectKey resultType="java.lang.String" keyProperty="sysUserId" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sys_user (user_name, password, full_name, 
+    insert into sys_user (sys_user_id,user_name, password, full_name,
       user_email, user_birthday, user_phone, 
       user_photo, user_sign)
-    values (#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, 
+    values (#{sysUserId,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR},
       #{userEmail,jdbcType=VARCHAR}, #{userBirthday,jdbcType=TIMESTAMP}, #{userPhone,jdbcType=VARCHAR}, 
       #{userPhoto,jdbcType=VARCHAR}, #{userSign,jdbcType=VARCHAR})
   </insert>

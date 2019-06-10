@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Focus Admin: Widget</title>
+    <title>注册</title>
 
     <!-- ================= Favicon ================== -->
     <!-- Standard -->
@@ -63,17 +63,17 @@
 									</label>
                                 </div>
                                 <div class="checkbox">
-                                    <label id="warning" class="text-center text-primary" style="width: 100%;text-align: center;">
+                                    <label id="warning" class="text-center text-danger" style="width: 100%;text-align: center;">
                                          &nbsp;
                                     </label>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">注册</button>
-                                <div class="social-login-content">
-                                    <div class="social-button">
-                                        <button type="button" class="btn btn-primary bg-facebook btn-flat btn-addon m-b-10"><i class="ti-facebook"></i>Register with facebook</button>
-                                        <button type="button" class="btn btn-primary bg-twitter btn-flat btn-addon m-t-10"><i class="ti-twitter"></i>Register with twitter</button>
-                                    </div>
-                                </div>
+                                <!--<div class="social-login-content">-->
+                                    <!--<div class="social-button">-->
+                                        <!--<button type="button" class="btn btn-primary bg-facebook btn-flat btn-addon m-b-10"><i class="ti-facebook"></i>Register with facebook</button>-->
+                                        <!--<button type="button" class="btn btn-primary bg-twitter btn-flat btn-addon m-t-10"><i class="ti-twitter"></i>Register with twitter</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
                                 <div class="register-link m-t-15 text-center">
                                     <p>已有账号？<a href="/home/toLogin">立即登录</a></p>
                                 </div>
@@ -99,13 +99,24 @@
                     if(isEmpty($(this).val())){
                         $("#warning").text("请将信息填写完整！");
                         isSubmit=false;
+                        return ;
+                    }
+                    if(!$(this).val().match("^[a-zA-Z0-9_\u4e00-\u9fa5]+$")&&$(this).attr("id")!='fullName'){
+                        $("#warning").text("请不要输入特殊字符!");
+                        isSubmit=false;
+                        return ;
+                    }
+                    if($("#password").val()!=$("#password2").val()){
+                        $("#warning").text("'确认密码'与'密码'不一致!");
+                        isSubmit=false;
+                        return ;
                     }
                 });
-                return false;
+                return isSubmit;
             }, //提交前的回调函数
             success: function(data){
-                if(data==1){
-                    location.href="/"
+                if(data==0){
+                    location.href="/home/toLogin"
                 }
             },  //提交成功后的回调函数
             error:function(data){

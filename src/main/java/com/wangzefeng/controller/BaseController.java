@@ -1,6 +1,7 @@
 package com.wangzefeng.controller;
 
 import com.wangzefeng.pojo.SysUser;
+import com.wangzefeng.service.CommonService;
 import com.wangzefeng.tools.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,9 @@ public class BaseController {
 
     @Autowired
     protected HttpServletResponse response;
+
+    @Autowired
+    protected CommonService commonService;
 
     public SysUser getSysUser(){
         Object ouser = session.getAttribute(Constants.SESSION_USER);
