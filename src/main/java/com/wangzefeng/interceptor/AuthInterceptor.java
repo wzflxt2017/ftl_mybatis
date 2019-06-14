@@ -24,6 +24,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             SysUser sysUser = (SysUser) o1;
             if(ValidateUtil.validateString(sysUser.getSysUserId())){
                 httpServletRequest.getSession().setMaxInactiveInterval(100*60*30);
+                httpServletRequest.setAttribute("sysUser",sysUser);
                 logger.info("请求的用户是：\n\t"+sysUser);
                 return true;
             }else{

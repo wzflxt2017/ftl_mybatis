@@ -143,5 +143,15 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+    <!--&lt;!&ndash;用于转换前端传过来的日期类型数据&ndash;&gt;-->
+    <!--<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
+        <!--<property name="converters">-->
+            <!--<list>-->
+                <!--<bean class="com.wangzefeng.converter.DateConverter" />-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<mvc:annotation-driven conversion-service="conversionService" />-->
+
 
 </beans>

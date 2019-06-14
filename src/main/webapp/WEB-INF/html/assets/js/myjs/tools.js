@@ -30,3 +30,6 @@ function delCookie(name)
     if(cval!=null)
         document.cookie= name + "="+cval+";expires="+exp.toGMTString();
 }
+function forword(url){
+    location.href=url;
+}
