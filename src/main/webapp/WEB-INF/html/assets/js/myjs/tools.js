@@ -33,3 +33,7 @@ function delCookie(name)
 function forword(url){
     location.href=url;
 }
+
+function toClick(id){
+    $("#"+id).click();
+}

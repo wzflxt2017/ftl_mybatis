@@ -1,6 +1,8 @@
 package com.wangzefeng.controller;
 
+import com.wangzefeng.pojo.AllFile;
 import com.wangzefeng.pojo.SysUser;
+import com.wangzefeng.service.FileService;
 import com.wangzefeng.service.IndexService;
 import com.wangzefeng.tools.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class IndexController extends BaseController {
     @Autowired
     private IndexService indexService;
 
+    @Autowired
+    private FileService fileService;
+
     @RequestMapping("/outLogin")
     public String outLogin(){
         session.removeAttribute(Constants.SESSION_USER);
@@ -26,6 +31,8 @@ public class IndexController extends BaseController {
     @RequestMapping("/profile")
     public ModelAndView profile(ModelAndView modelAndView){
         modelAndView.addObject("user",getSysUser());
+        AllFile allFile = fileService.selectById(getSysUser().getUserPhoto());
+        modelAndView.addObject("image",allFile);
         modelAndView.setViewName("app-profile");
         return modelAndView;
     }

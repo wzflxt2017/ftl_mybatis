@@ -151,10 +151,10 @@
     <selectKey resultType="java.lang.String" keyProperty="fileId" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into all_file (file_name, file_path, file_type, 
+    insert into all_file (file_id,file_name, file_path, file_type,
       upload_user_id, upload_date, file_data_id
       )
-    values (#{fileName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, #{fileType,jdbcType=VARCHAR}, 
+    values (#{fileId,jdbcType=VARCHAR},#{fileName,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, #{fileType,jdbcType=VARCHAR},
       #{uploadUserId,jdbcType=VARCHAR}, #{uploadDate,jdbcType=TIMESTAMP}, #{fileDataId,jdbcType=VARCHAR}
       )
   </insert>
