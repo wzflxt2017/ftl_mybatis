@@ -225,13 +225,13 @@
 <script>
   $(function(){
       $("#save").hide();
-      $(".form-control").attr("readonly","readonly");
+      $("#myform .form-control").attr("readonly","readonly");
       $("#myform").ajaxForm({
           url:"/user/modifyInfo",
           type:"POST",
           beforeSubmit:function(){
               var canSub=true;
-              $(".form-control").each(function(){
+              $("#myform .form-control").each(function(){
                   if(isEmpty($(this).val())){
                       canSub=false;
                   }
@@ -241,7 +241,7 @@
           success:function(){
               $("#save").hide();
               $("#modify").show();
-              $(".form-control").attr("readonly","readonly");
+              $("#myform .form-control").attr("readonly","readonly");
           },
           error:function () {
 
@@ -271,7 +271,7 @@
   function modifyInfo(){
       $("#save").show();
       $("#modify").hide();
-      $(".form-control").removeAttr("readonly");
+      $("#myform .form-control").removeAttr("readonly");
   }
 
   $("#userBirthday").datetimepicker({

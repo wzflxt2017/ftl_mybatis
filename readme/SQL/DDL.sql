@@ -1,3 +1,4 @@
+-- 用户表
 CREATE TABLE sys_user (
 	`sys_user_id` VARCHAR (40) NOT NULL COMMENT '用户ID',
 	`user_name` VARCHAR (40) NOT NULL COMMENT '账号名',
@@ -11,13 +12,14 @@ CREATE TABLE sys_user (
 	PRIMARY KEY (`sys_user_id`)
 ) ENGINE = INNODB charset = utf8;
 
+-- 测试类型表
 CREATE TABLE test_type (
 	`test_type_id` VARCHAR (40) NOT NULL COMMENT '测试类型ID',
 	`test_name` VARCHAR (100) NOT NULL COMMENT '类型名称',
 	`test_remark` VARCHAR (600) COMMENT '类型说明',
 	PRIMARY KEY (`test_type_id`)
 ) ENGINE = INNODB charset = UTF8;
-
+-- 试卷表
 CREATE TABLE test_examination (
 	`test_examination_id` VARCHAR (40) NOT NULL COMMENT '测试试卷ID',
 	`start_time` datetime COMMENT '测试开始时间',
@@ -32,7 +34,7 @@ CREATE TABLE test_examination (
 	CONSTRAINT `fk1_test_type_id` FOREIGN KEY (`test_type_id`) REFERENCES `test_type` (`test_type_id`),
 	CONSTRAINT `fk1_sys_user_id` FOREIGN KEY (`sys_user_id`) REFERENCES `sys_user` (`sys_user_id`)
 ) ENGINE = INNODB charset = utf8;
-
+-- 题目表
 CREATE TABLE test_problems (
 	`test_problems_id` VARCHAR (40) NOT NULL COMMENT '测试题目ID',
 	`test_content` VARCHAR (1000) NOT NULL COMMENT '测试题目正文',
@@ -48,7 +50,7 @@ CREATE TABLE test_problems (
 	CONSTRAINT `fk2_test_type_id` FOREIGN KEY (`test_type_id`) REFERENCES `test_type` (`test_type_id`),
 	CONSTRAINT `fk2_propositional_user_id` FOREIGN KEY (`propositional_user_id`) REFERENCES `sys_user` (`sys_user_id`)
 ) ENGINE = INNODB charset = utf8;
-
+-- 测试记录表
 CREATE TABLE test_record (
 	`test_record_id` VARCHAR (40) NOT NULL COMMENT '测试记录ID',
 	`test_time` datetime COMMENT '测试时间',
@@ -64,7 +66,7 @@ CREATE TABLE test_record (
 	CONSTRAINT `fk3_test_examination_id` FOREIGN KEY (`test_examination_id`) REFERENCES `test_examination` (`test_examination_id`),
 	CONSTRAINT `fk3_test_problems_id` FOREIGN KEY (`test_problems_id`) REFERENCES `test_problems` (`test_problems_id`)
 ) ENGINE = INNODB charset = utf8;
-
+-- 题目选项表
 CREATE TABLE test_problem_option (
 	`test_problem_option_id` VARCHAR (40) NOT NULL COMMENT '选项ID',
 	`test_problems_id` VARCHAR (40) NOT NULL COMMENT '测试题目ID',
@@ -74,7 +76,7 @@ CREATE TABLE test_problem_option (
 	KEY `fk4_test_problems_id`(`test_problems_id`),
 	CONSTRAINT `fk_test_problems_id` FOREIGN KEY (`test_problems_id`) REFERENCES `test_problems` (`test_problems_id`)
 ) ENGINE = INNODB charset = utf8;
-
+-- 文件表
 CREATE TABLE all_file (
 	`file_id` VARCHAR (40) NOT NULL COMMENT '文件ID',
 	`file_name` VARCHAR (400) NOT NULL COMMENT '文件名',

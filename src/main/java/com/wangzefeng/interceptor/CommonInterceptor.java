@@ -19,13 +19,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-//        Object ouser = httpServletRequest.getSession().getAttribute(Constants.SESSION_USER);
-//        if(ouser!=null){
-//            SysUser sysUser = (SysUser) ouser;
-//            if(ValidateUtil.validateString(sysUser.getSysUserId())){
-//                httpServletRequest.setAttribute("sysUser",sysUser);
-//            }
-//        }
+        logger.info(httpServletRequest.getRequestURL());
         return true;
     }
 

@@ -137,6 +137,13 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
+            <!--要释放静态资源-->
+            <mvc:exclude-mapping path="/html/assets/**" />
+            <mvc:exclude-mapping path="/upload/**" />
+            <bean class="com.wangzefeng.interceptor.CommonInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
             <!--要释放首页、登录页等页面-->
             <mvc:exclude-mapping path="/home/**"/>
             <!--要释放静态资源-->
@@ -164,6 +171,7 @@
         <!--<property name="maxUploadSize" value="-1" />-->
     <!--</bean>-->
 
+    <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="104857600" />

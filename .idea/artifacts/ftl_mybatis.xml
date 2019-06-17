@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="ftl_mybatis">
-    <output-path>$PROJECT_DIR$/out/artifacts/ftl_mybatis</output-path>
+    <output-path>$PROJECT_DIR$/../ftl_mybatis_artifacts</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
